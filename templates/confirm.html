@@ -1,0 +1,21 @@
+
+   <!DOCTYPE html>
+   <!-- {% load static %}-->
+    <html>
+     <!--<link rel="stylesheet" href="{ static 'coloumn.css' %}"> -->
+    <body>
+     <center>
+     <h1>REPORT OF THE  STATUS OF PAYMENT FOR APPOINTMENTS SCHEDULED FOR TODAY :</h1> 
+             {% for x in listpayment %}
+             {% if x.patient_payment == 0 %}
+             
+             <h3  style="background-color:red;">the patient {{ x.patient_name}}  identity number {{ x.patient_identity}} didnt't pay for the appointment</h3>
+             {% else %}
+             <h3>the patient {{ x.patient_name}}  identity number {{ x.patient_identity}} paid for the appointment</h3>
+        {% endif %}
+         {% endfor %}
+         
+         <br><br><a href="{% url 'home' %}">Return to Home Page</a> 
+     </center>
+    </body>
+    </html>

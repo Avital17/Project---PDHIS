@@ -1,0 +1,14 @@
+{% block content %}
+<h2>UPLOAD</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token%}
+    <input type="file" name="document">
+    <button type="submit">UPLOAD TOFES 17</button>
+</form>
+{% if url%}
+<p>uploaded file:<a href="{{url}}">{{url}}</a></p>
+{% endif %}
+{% endblock %}
+
+
+<br><br><a href="{% url 'home' %}">Return to Home Page</a> 
