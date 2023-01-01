@@ -1,46 +1,33 @@
-from django.urls import path
-from .import views
+"""system URL Configuration
 
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/4.1/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
+from django.contrib import admin
+from django.urls import include, path
+from django.conf import settings
+from django.conf.urls.static import static
+from django.views.generic import RedirectView
 
-
-from .import admin
 
 urlpatterns = [
-     path('', views.home, name='home'),
-     path('index/', views.index, name='index'),
-     path('getdoctor/', views.getdoctor, name='getdoctor'),
-     path('getpatients/', views.getpatients, name='getpatients'),
-     path('lists/', views.lists, name='lists'),
-     path('checkpriority/', views.checkpriority, name='priority'),
-     path('checkpriority/checkid/', views.checkid, name='checkid'),
-    # path('admin:events_event_changelist', admin.changelist_view, name='changeview')
-     path('checkdatesofappointments/', views.checkdatesofappointments, name='checkdatesofappointments'),
-     path('checkdatesofappointments/checkdates/', views.checkdates, name='checkdates'),
-     path('add/', views.add, name='add'),
-     path('add/addappointment/', views.addappointment, name='addappointment'),
-     path('response/', views.response, name='response'),
-     path('response/addurgentappointment/', views.addurgentappointment, name='addurgentappointment'),
-     path('turnoffalert', views.turnoffalert, name='turnoffalert'),
-     path('cancel/', views.cancel, name='cancel'),
-     path('cancel/cancellation/', views.cancellation, name='cancellation'),
-     path('reschedule/', views.reschedule, name='reschedule'),
-     path('reschedule/rescheduling/', views.rescheduling, name='rescheduling'),
-     path('payment/', views.payment, name='payment'),
-     path('contact/', views.contact, name='contact'),
-     path('notify/', views.notify, name='notify'),
-     path('upload/', views.upload, name='upload'),
-     path('confirm/', views.confirm, name='confirm'),
-     path('tarif/', views.tarif, name='tarif'),
-        path('tarif/contacting/', views.contacting, name='contacting'),
-     
-    
-   
-    
-     
-    
+    path('medicalsecretary/', include('medicalsecretary.urls')),
+    path('admin/', admin.site.urls),
+    path('', RedirectView.as_view(url='medicalsecretary/')),
+   # path('upload/', views.upload, name='upload'),
+]
 
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 
-
-   
-
-]   
+admin.site.site_header = "Hospital Management System"
