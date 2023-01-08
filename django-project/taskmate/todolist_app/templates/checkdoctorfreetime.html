@@ -1,0 +1,44 @@
+{% extends 'base2.html' %}
+
+{% block content %}
+<div class="container">
+<DOCTYPE html>
+    <html>
+       <body>
+        <center>
+          <br>
+          <h2>SHOW MY CALENDAR {{ month }}  {{ year }}</h2>
+
+            {{ cal|safe }}
+
+
+
+         <form action="checkmyfreetime/" method="post">
+             {% csrf_token %}
+             
+            enter Doctor's name:<br>
+            <input type="text" name="doctor_name">
+            <br><br>
+            <label for="appt-date">Choose an event date:</label>
+            <input type="date" name="date" id="dayoff">
+            <br><br>
+            <label for="appt-time">Choose an event time:</label>
+            <input type="time" name="appt-time"/>
+            <br><br>
+            <label for="email">enter your email:</label>
+            <input type="email"  name="email"/>
+            <!--<form action="mailto:patient.email" method="post" enctype="text/plain">-->
+            <a href="{% url 'checkmyfreetime' %}">
+            <input type="submit"/>
+            </a>
+
+         </form>
+            
+         </center>
+    
+        </body>
+    </html>
+  </div>
+  
+
+{% endblock content %}

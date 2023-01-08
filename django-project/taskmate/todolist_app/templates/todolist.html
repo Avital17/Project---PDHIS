@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>PDHIS-home</title>
+{% endblock title %}
+
+{% load static %}
+
+{% block content %}
+  <div class="container">
+    <br>
+    <center><h2>{{ welcome_text }}</h2></center>
+    <br>
+    <br>
+    <div class="row">
+      <div class="col-sm">
+        <img src="{% static 'images/p1.jpg' %}" width="350" height="300" style="border-radius: 50%" alt="notes">
+      </div>
+      <div class="col-sm">
+        <img src="{% static 'images/p2.jpg' %}" width="350" height="300" style="border-radius: 50%" alt="notes">
+      </div>
+      <div class="col-sm">
+        <img src="{% static 'images/p3.jpg' %}" width="350" height="300" style="border-radius: 50%" alt="notes">
+      </div>
+    </div>
+  </div>
+   </div>
+{% endblock content %}
