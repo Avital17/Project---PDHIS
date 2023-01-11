@@ -70,7 +70,7 @@ def home(request):
 
 
 def index(request):
-    mypatients = Patient.objects.filter(date_created=yesterday)
+    mypatients = User.objects.filter(date_joined=yesterday)
     template = loader.get_template('listbydates.html')
     context = {
         'mypatients': mypatients,
