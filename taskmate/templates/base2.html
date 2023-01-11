@@ -1,0 +1,106 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>{{doctor}}</title>
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+</head>
+
+<style>
+
+
+    
+{% block style %}{% endblock style %}
+</style>
+<body>
+
+    
+
+  <div class="header" style="
+  background: rgb(177, 177, 177) url('../static/images/ccc Report 1200x666.jpg.webp') no-repeat fixed center
+  {% if "appointment" in request.path %}
+  max-height:300px!important;min-height:300px!important;
+  {% endif %}
+  ">
+  
+    
+    <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search">
+        <a class="navbar-brand" href="#"><img src="{% static 'images/img.png' %}" width="50" height="50" alt="PDHIS"></a>
+
+        <div class="container"><a class="navbar-brand" href="{% url 'hpage' %}">home</a>
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse"
+                id="navcol-1">
+                <ul class="nav navbar-nav">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" href="{% url 'articals' %}">Articals</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" href="{% url 'contact' %}">contact</a>
+                    </li>
+                    
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" href="{% url 'events' %}">Events</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" href="{% url 'massege' %}">massege</a>
+                    </li>
+                    {% if request.user.is_authenticated %}
+                    <li class="nav-item" role="presentation">
+                      <a class="nav-link active" href="{% url 'calendar' %}">Calendar</a>
+                  </li>
+                  {% endif %}
+                  <div class="p-2 bg-light text-dark">{{ user.username }}</div>
+                  <a href="{% url 'logout_doctor' %}">
+                   <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Log out</button>
+                  </a>
+                  
+                  
+         
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+    
+   
+   {% block cta %}{% endblock cta %}
+</div>
+
+<div class="form-inline my-2 my-lg-0">
+                 
+
+
+
+    {% block content %}{% endblock content %}
+
+  <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+  
+ <script>
+
+
+    
+    {% block script %}{% endblock script %}
+ </script>
+</body>
+
+
+
+
+
+
+</html>
